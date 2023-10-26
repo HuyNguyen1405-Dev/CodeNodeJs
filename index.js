@@ -5,6 +5,8 @@ import cors from "cors";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
 
+const googleServiceAccount = process.env.GOOGLE_SERVICE_ACCOUNT;
+
 mongoose.connect('mongodb+srv://huynv14work:123@cluster0.euvsszg.mongodb.net/notification_app?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -47,7 +49,7 @@ app.use(function (req, res, next) {
 
 
 initializeApp({
-    credential: applicationDefault(),
+    credential: googleServiceAccount,
     projectId: 'managementwork-6b9fc',
 });
 

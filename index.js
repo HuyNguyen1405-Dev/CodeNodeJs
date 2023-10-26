@@ -5,7 +5,13 @@ import cors from "cors";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
 
-const googleServiceAccount = process.env.GOOGLE_SERVICE_ACCOUNT;
+
+const googleServiceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+admin.initializeApp({
+    credential: credential.cert(googleServiceAccount),
+    projectId: 'managementwork-6b9fc',
+});
 
 mongoose.connect('mongodb+srv://huynv14work:123@cluster0.euvsszg.mongodb.net/notification_app?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -47,11 +53,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-initializeApp({
-    credential: googleServiceAccount,
-    projectId: 'managementwork-6b9fc',
-});
 
 app.post("/saveInfoUser", function (req, res) {
     const username = req.body.username;

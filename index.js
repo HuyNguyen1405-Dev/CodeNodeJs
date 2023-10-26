@@ -5,8 +5,6 @@ import cors from "cors";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS;
-
 mongoose.connect('mongodb+srv://huynv14work:123@cluster0.euvsszg.mongodb.net/notification_app?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -236,7 +234,7 @@ app.post("/sendMessageLoginSuccess", function (req, res) {
             title: "Đăng nhập thành công!",
             body: "Chào mừng bạn đã đến với ứng dụng đăng nhập.",
         },
-        token: "cdR9p0U-c5Z6TyRam8V_Q4:APA91bFhdnm4cqmS5X1mm0_8yIlyK_1ApfQjNpTsj3NP_GB1lHhqQRgGf34U_ncWYr0rC2OfOfmTm8RX-8mcPCAH1PGERYiPe1w4nkRTdy6dfhTTj2muw4q0-ecKjCkQiSo-8UGO6zhn",
+        token: "ehHU2v-j1S--7wXJt3XzgU:APA91bFN3a4fc-zvvxvRAZr8kpDl_bDWNqxbjEEBcRRSioKIxKmjTMxO49tLbBfPsq291DTeJgKiXb1P_XdOG5naXY6ICDBaPAY3AsipKZsNyfhZ0LCRkIQhPheNPjPjKJn-V3iqLPB8",
     };
 
     getMessaging()
@@ -260,5 +258,5 @@ app.listen(5000, function () {
     console.log("Server started on port 5000");
 });
 
-// $env:GOOGLE_APPLICATION_CREDENTIALS="C:/Users/vanhu/OneDrive/Documents/Trung tâm thông tin/my-express-project/managementwork-6b9fc-firebase-adminsdk-ng13m-ea9224edb1.json"
+
 

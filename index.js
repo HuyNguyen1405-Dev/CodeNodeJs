@@ -4,14 +4,14 @@ import express from "express";
 import cors from "cors";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
-import * as admin from 'firebase-admin';
-import * as serviceAccount from './managementwork-6b9fc-firebase-adminsdk-ng13m-ea9224edb1.json';
+import admin from "firebase-admin";
+
+const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert(credentialsPath),
+    projectId: 'managementwork-6b9fc',
 });
-
-const messaging = admin.messaging();
 
 mongoose.connect('mongodb+srv://huynv14work:123@cluster0.euvsszg.mongodb.net/notification_app?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -51,12 +51,6 @@ app.use(
 app.use(function (req, res, next) {
     res.setHeader("Content-Type", "application/json");
     next();
-});
-
-
-initializeApp({
-    credential: applicationDefault(),
-    projectId: 'managementwork-6b9fc',
 });
 
 app.post("/saveInfoUser", function (req, res) {
@@ -142,7 +136,7 @@ app.post("/send", function (req, res) {
                         token: token_admin
                     };
 
-                    messaging
+                    getMessaging()
                         .send(message)
                         .then((response) => {
                             res.status(200).json({
@@ -266,5 +260,5 @@ app.listen(5000, function () {
     console.log("Server started on port 5000");
 });
 
-
+// $env:GOOGLE_APPLICATION_CREDENTIALS="C:/Users/vanhu/OneDrive/Documents/Trung tâm thông tin/my-express-project/managementwork-6b9fc-firebase-adminsdk-ng13m-ea9224edb1.json"
 

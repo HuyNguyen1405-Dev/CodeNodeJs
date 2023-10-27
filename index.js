@@ -4,14 +4,14 @@ import express from "express";
 import cors from "cors";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
-
-
-const googleServiceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+import * as admin from 'firebase-admin';
+import * as serviceAccount from './managementwork-6b9fc-firebase-adminsdk-ng13m-ea9224edb1.json';
 
 admin.initializeApp({
-    credential: credential.cert(googleServiceAccount),
-    projectId: 'managementwork-6b9fc',
+    credential: admin.credential.cert(serviceAccount),
 });
+
+const messaging = admin.messaging();
 
 mongoose.connect('mongodb+srv://huynv14work:123@cluster0.euvsszg.mongodb.net/notification_app?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -53,6 +53,11 @@ app.use(function (req, res, next) {
     next();
 });
 
+
+initializeApp({
+    credential: applicationDefault(),
+    projectId: 'managementwork-6b9fc',
+});
 
 app.post("/saveInfoUser", function (req, res) {
     const username = req.body.username;
@@ -137,7 +142,7 @@ app.post("/send", function (req, res) {
                         token: token_admin
                     };
 
-                    getMessaging()
+                    messaging
                         .send(message)
                         .then((response) => {
                             res.status(200).json({

@@ -229,28 +229,34 @@ app.post("/sendNotificationToUser", function (req, res) {
 });
 
 app.post("/sendMessageLoginSuccess", function (req, res) {
-    const receivedToken = req.body.fcmToken;
-    const message = {
-        data: {
-            title: "Đăng nhập thành công!",
-            body: "Chào mừng bạn đã đến với ứng dụng đăng nhập.",
-        },
-        token: "fy3lCycVR9OV_AJQ8-F24P:APA91bG3W8fANFafIv-oQn-791GoD1O2lG55iYYDeN3MQXOWM_9DHEL_qyl3tqWhL3Kk1xtRaqUIXTmjwdDqG8Yc1YKQRH-dkH-OEOVBeFb2k0pz01c-0FnklUh8RXe9lU8z7jrmi0-C",
-    };
+    try {
+        let message = {
+            notification: {
+                title: "Đăng nhập thành công!",
+                body: "Chào mừng bạn đã đến với ứng dụng đăng nhập.",
+            },
+            data: {
+                orderId: 1234566,
+                orderdate: "24-10-2023"
+            },
+            token: "fy3lCycVR9OV_AJQ8-F24P:APA91bG3W8fANFafIv-oQn-791GoD1O2lG55iYYDeN3MQXOWM_9DHEL_qyl3tqWhL3Kk1xtRaqUIXTmjwdDqG8Yc1YKQRH-dkH-OEOVBeFb2k0pz01c-0FnklUh8RXe9lU8z7jrmi0-C",
+        };
 
-    getMessaging()
-        .send(message)
-        .then((response) => {
-            res.status(200).json({
-                message: "Successfully sent message",
-                token: receivedToken,
-            });
+        admin.send(message, function (err, res) {
+            if (err) {
+                return res.status(500).send({
+                    message: err
+                })
+            }
+            else {
+                return res.status(200).send({
+                    message: "Gửi thông báo thành công"
+                })
+            }
         })
-        .catch((error) => {
-            res.status(400);
-            res.send(error);
-            console.log("Error sending message:", error);
-        });
+    } catch {
+
+    }
 });
 
 

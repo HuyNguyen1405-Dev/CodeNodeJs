@@ -1,4 +1,3 @@
-import { initializeApp, applicationDefault } from 'firebase-admin/app';
 import { getMessaging } from "firebase-admin/messaging";
 import express from "express";
 import cors from "cors";
@@ -236,7 +235,7 @@ app.post("/sendMessageLoginSuccess", function (req, res) {
             title: "Đăng nhập thành công!",
             body: "Chào mừng bạn đã đến với ứng dụng đăng nhập.",
         },
-        token: "ehHU2v-j1S--7wXJt3XzgU:APA91bFN3a4fc-zvvxvRAZr8kpDl_bDWNqxbjEEBcRRSioKIxKmjTMxO49tLbBfPsq291DTeJgKiXb1P_XdOG5naXY6ICDBaPAY3AsipKZsNyfhZ0LCRkIQhPheNPjPjKJn-V3iqLPB8",
+        token: "fy3lCycVR9OV_AJQ8-F24P:APA91bG3W8fANFafIv-oQn-791GoD1O2lG55iYYDeN3MQXOWM_9DHEL_qyl3tqWhL3Kk1xtRaqUIXTmjwdDqG8Yc1YKQRH-dkH-OEOVBeFb2k0pz01c-0FnklUh8RXe9lU8z7jrmi0-C",
     };
 
     getMessaging()

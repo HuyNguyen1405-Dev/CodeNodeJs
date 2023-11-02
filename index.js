@@ -235,10 +235,6 @@ app.post("/sendMessageLoginSuccess", function (req, res) {
                 title: "Đăng nhập thành công!",
                 body: "Chào mừng bạn đã đến với ứng dụng đăng nhập.",
             },
-            data: {
-                orderId: 1234566,
-                orderdate: "24-10-2023"
-            },
             token: "dZVG_1YWRZSlEFRBXuly8p:APA91bEz9unTDJTaoUk2PXV7SVCOuBFu8uJGNnwAbUS0ig3cN4qIDFFLh2Sen3G17l93IarLWZHuPWfNSYZjC0puM3sCcmGyMcQTu5vBDr96eWUJKSJLMrdFk1IfR8TdgNk4M3H1gDSF",
         };
 

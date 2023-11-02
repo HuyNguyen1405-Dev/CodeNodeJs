@@ -126,10 +126,11 @@ app.post("/send", function (req, res) {
                     const additionalDataString = JSON.stringify(additionalData);
 
                     const message = {
-                        data: {
+                        notification: {
                             title: title,
                             body: body,
-                            url: url,
+                        },
+                        data: {
                             additionalData: additionalDataString,
                         },
                         token: token_admin

@@ -188,10 +188,9 @@ app.post("/sendNotificationToUser", function (req, res) {
             const tokens = foundUsers.map((user) => user.token);
 
             const messages = tokens.map((token) => ({
-                data: {
+                notification: {
                     title: title,
                     body: body,
-                    url: "https://google.com",
                 },
                 token: token,
             }));

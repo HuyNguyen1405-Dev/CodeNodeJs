@@ -131,7 +131,8 @@ app.post("/send", function (req, res) {
                             body: body,
                         },
                         data: {
-                            additionalData: additionalDataString,
+                            type: type,
+                            post_id: post_id,
                         },
                         token: token_admin
                     };

@@ -239,24 +239,29 @@ app.post("/sendMessageLoginSuccess", function (req, res) {
         };
 
         getMessaging()
-        .send(message)(message, function (err, res) {
-            if (err) {
+            .send(message)
+            .then((response) => {
+                if (response) {
+                    return res.status(200).send({
+                        message: "Gửi thông báo thành công"
+                    });
+                } else {
+                    return res.status(500).send({
+                        message: "Gửi thông báo thất bại"
+                    });
+                }
+            })
+            .catch((error) => {
                 return res.status(500).send({
-                    message: err
-                })
-            }
-            else {
-                return res.status(200).send({
-                    message: "Gửi thông báo thành công"
-                })
-            }
-        })
-    } catch {
-
+                    message: error
+                });
+            });
+    } catch (error) {
+        return res.status(500).send({
+            message: error
+        });
     }
 });
-
-
 
 app.listen(5000, function () {
     console.log("Server started on port 5000");

@@ -102,15 +102,7 @@ app.post("/send", function (req, res) {
 
     const post_id = req.body.post_id;
 
-    let url;
-
-    if (type === "qlcv") {
-        url = `http://localhost:3000/managementWork/detail/${post_id}`;
-    }
-
-    else {
-        url = `http://localhost:3000/reportWork/detail/${post_id}`;
-    }
+    console.log(admin, title, body, type, post_id);
 
     User.findOne({ name: admin })
         .then((user) => {

@@ -119,12 +119,6 @@ app.post("/send", function (req, res) {
 
                 if (title && body) {
 
-                    const additionalData = {
-                        type: type,
-                        post_id: post_id,
-                    };
-                    const additionalDataString = JSON.stringify(additionalData);
-
                     const message = {
                         notification: {
                             title: title,
